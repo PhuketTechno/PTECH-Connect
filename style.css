@@ -29,7 +29,7 @@ body {
 	font-weight: bold;
 }
 .main {
-	padding: 130px 40px 40px;
+	padding-top:100px;
 	flex: 1;
 	background-color: #85C1E9 ;
 }
