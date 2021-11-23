@@ -2,13 +2,14 @@
     position: sticky;
     top: 0px;
     z-index: 999;
- 
+    max-height: 72px;
+    padding-top: 5px;
 }
 
 .logo_head {
     float: left;
-    width:70px;
-    height:70px;
+    width:60px;
+    height:60px;
     border-right: 0.5rem;
 }
 
@@ -188,4 +189,20 @@ input[type=number] {
 
 .img-thumbnail {
     height: 100px;
+}
+
+.loader {
+    display:none;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/585d0331234507.564a1d239ac5e.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 150px;
+    background-color: black;
+    opacity: 0.87;
 }
