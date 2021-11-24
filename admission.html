@@ -16,16 +16,14 @@
         rel='stylesheet' type='text/css'>
      
     <!-- jquery.Thailand.js -->
-    <link rel="stylesheet" href="https://ptech-connect.netlify.app/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
 
-    <link href="./style1.css" rel="stylesheet" />
-    
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
-     
-        
+    <link rel="stylesheet" href="https://ptech-connect.netlify.app/style1.css">
+    <!-- <link href="./style1.css" rel="stylesheet" /> -->    
 </head>
 
 <body>
@@ -71,8 +69,8 @@
     <br><br>
     <div class="container">
         <!-- เริ่มฟอร์ม -->
-        <form class="row g-3 needs-validation" id="admissionForm" name="admissionForm" method="post"
-            data-jsv-form="false"
+        <form class="row g-3 needs-validation" id="admissionForm" name="admissionForm" method="post" autocomplete="off"
+            data-jsv-form="true"
             data-jsv-form-invalid-message="กรุณาตรวจสอบความถูกต้องของข้อมูล"
 			data-jsv-form-incomplete-tooltip="กรุณากรอกข้อมูลให้ครบถ้วน"
             data-jsv-form-invalid-callback="gotoTop" >
@@ -203,8 +201,8 @@
                 </div>
                 <div class="col-md-3">
                     <label for="datepicker-th-2" class="form-label">เกิดวันที่ </label>
-                    <input  class="form-control" name="birthday" id="birthday" data-jsv-validators="require"
-                    data-jsv-field-error-require="กรุณาใส่วันเกิด">  
+                    <input  class="form-control" name="birthday" id="dob" data-jsv-validators="require"
+                    data-jsv-field-error-require="กรุณาใส่วันเกิด"  >  
                 </div>
 
                 <div class="col-md-1">
@@ -506,8 +504,8 @@
     
                     <div class="col-md-4">
                         <i class="far fa-id-card"></i> สำเนาบัตรประชาชน ของผู้สมัคร
-                        <input type="hidden" class="form-control" name="filename1" id="filename1">
-                        <input type="file" class="form-control" name="uploadfile1" id="uploadfile1" accept="application/pdf,image/*" >
+                        <div id="dataFile1"></div>
+                        <input type="file" class="form-control" id="uploadfile1" accept="application/pdf,image/*" >
                         <div class="">
                             <img id="preview1" class="img-thumbnail hidden">
                         </div>
@@ -517,8 +515,8 @@
                     
                     <div class="col-md-4">
                         <i class="fas fa-file-invoice"></i> สำเนาทะเบียนบ้าน ของผู้สมัคร
-                        <input type="hidden" class="form-control" name="filename2" id="filename2">
-                        <input type="file" class="form-control" name="uploadfile2" id="uploadfile2" accept="application/pdf,image/*" >
+                        <div id="dataFile2"></div>
+                        <input type="file" class="form-control" id="uploadfile2" accept="application/pdf,image/*" >
                         <div class="">
                             <img id="preview2" class="img-thumbnail hidden">
                         </div>  
@@ -527,8 +525,8 @@
 
                     <div class="col-md-4">
                         <i class="fas fa-id-badge"></i> รูปถ่ายขนาด 1 นิ้ว
-                        <input type="hidden" class="form-control" name="filename3" id="filename3">
-                        <input type="file" class="form-control" name="uploadfile3" id="uploadfile3" accept="application/pdf,image/*" >
+                        <div id="dataFile3"></div>
+                        <input type="file" class="form-control" id="uploadfile3" accept="application/pdf,image/*" >
                         <div class="">
                             <img id="preview3" class="img-thumbnail hidden">
                         </div>  
@@ -592,17 +590,14 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js"></script>
 
-    <!-- dependencies for zip mode -->
-    <script type="text/javascript"
-        src="https://ptech-connect.netlify.app/jquery.Thailand.js/dependencies/zip.js/zip.js"></script>
-    <!-- / dependencies for zip mode -->
+ 
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    
 
-    <script type="text/javascript"
-        src="https://ptech-connect.netlify.app/jquery.Thailand.js/dependencies/JQL.min.js"></script>
-    <script type="text/javascript"
-        src="https://ptech-connect.netlify.app/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
-    <script type="text/javascript"
-        src="https://ptech-connect.netlify.app/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"></script>
 
 
@@ -618,243 +613,129 @@
         const thaiProvinces = ['กรุงเทพฯ', 'กระบี่', 'กาญจนบุรี', 'กาฬสินธุ์', 'กำแพงเพชร', 'ขอนแก่น', 'จันทบุรี', 'ฉะเชิงเทรา', 'ชลบุรี', 'ชัยนาท', 'ชัยภูมิ', 'ชุมพร', 'เชียงใหม่', 'เชียงราย', 'ตรัง', 'ตราด', 'ตาก', 'นครนายก', 'นครปฐม', 'นครพนม', 'นครราชสีมา', 'นครศรีธรรมราช', 'นครสวรรค์', 'นนทบุรี', 'นราธิวาส', 'น่าน', 'บึงกาฬ', 'บุรีรัมย์', 'ปทุมธานี', 'ประจวบคีรีขันธ์', 'ปราจีนบุรี', 'ปัตตานี', 'พระนครศรีอยุธยา', 'พะเยา', 'พังงา', 'พัทลุง', 'พิจิตร', 'พิษณุโลก', 'เพชรบุรี', 'เพชรบูรณ์', 'แพร่', 'ภูเก็ต', 'มหาสารคาม', 'มุกดาหาร', 'แม่ฮ่องสอน', 'ยโสธร', 'ยะลา', 'ร้อยเอ็ด', 'ระนอง', 'ระยอง', 'ราชบุรี', 'ลพบุรี', 'ลำปาง', 'ลำพูน', 'เลย', 'ศรีสะเกษ', 'สกลนคร', 'สงขลา', 'สตูล', 'สมุทรปราการ', 'สมุทรสงคราม', 'สมุทรสาคร', 'สระแก้ว', 'สระบุรี', 'สิงห์บุรี', 'สุโขทัย', 'สุพรรณบุรี', 'สุราษฎร์ธานี', 'สุรินทร์', 'หนองคาย', 'หนองบัวลำภู', 'อ่างทอง', 'อำนาจเจริญ', 'อุดรธานี', 'อุตรดิตถ์', 'อุทัยธานี', 'อุบลราชธานี']
     </script>
 
-    <script type="text/javascript">
-        /* ที่อยู่นักเรียน */
-        $.Thailand({
-            database: 'https://ptech-connect.netlify.app/jquery.Thailand.js/database/db.json',
+<!-- เลือกที่อยู่ -->
+<script type="text/javascript">
+    $.Thailand({
+        database: 'https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/database/db.json',
 
-            $district: $('#admissionForm [name="district"]'),
-            $amphoe: $('#admissionForm [name="amphoe"]'),
-            $province: $('#admissionForm [name="province"]'),
-            $zipcode: $('#admissionForm [name="zipcode"]'),
+        $district: $('#admissionForm [name="district"]'),
+        $amphoe: $('#admissionForm [name="amphoe"]'),
+        $province: $('#admissionForm [name="province"]'),
+        $zipcode: $('#admissionForm [name="zipcode"]'),
 
-            onDataFill: function (data) {
-                //console.info('Data Filled', data);
-            },
+        onDataFill: function (data) {
+            //console.info('Data Filled', data);
+        },
 
-            onLoad: function () {
-                //console.info('Autocomplete is ready!');
-                $('#loader, .admissionForm').toggle();
-            }
-        });
-    </script>
+        onLoad: function () {
+            //console.info('Autocomplete is ready!');
+            $('#loader, .admissionForm').toggle();
+        }
+    });
+</script>
 
+<!-- form submit -->
+<script>
+    const form = document.getElementById('admissionForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    <!--อัพโหลดไฟล์ -->
-    <script>
-        /*         document.getElementById('submitBtn').addEventListener('click',
-                    function (e) {
-                        google.script.run.withSuccessHandler(onSuccess).uploadFiles(this.parentNode)
-                    })
+        //const formData= new FormData(form)
+        const formData = new FormData(e.target);
+        /*   const data = Array.from(formData.entries()).reduce((memo, pair) => ({
+                    ...memo,[pair[0]]: pair[1],
+                    }), 
+                    {}) */
+
+        document.getElementById("waiting").style.display="block"
+
+        const url = "https://script.google.com/macros/s/AKfycbxHkB5CTMEGGeJPUCOjx19mHO3o6anL5q_bSyypBp2ZuIn8mkBWdL0Tq25qMDAtcwE6/exec"
         
-                function onSuccess(data) {
-                    document.getElementById('resp').innerHTML = "File Uploaded to the path " + data;
-                } */
-    </script>
-
-    <!-- บันทึกลง Google Sheet -->
-    <!-- <script>
-        const form = document.getElementById('admissionForm');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-
-            const file = form.uploadfile1.files[0];
-            const fr = new FileReader();
-            fr.readAsArrayBuffer(file);
-      
-            fr.onload = f => {
-
-                const url = "https://script.google.com/macros/s/AKfycbxHkB5CTMEGGeJPUCOjx19mHO3o6anL5q_bSyypBp2ZuIn8mkBWdL0Tq25qMDAtcwE6/exec";  
-
-                const qs = new URLSearchParams({
-                    filename: form.filename1.value || file.name, mimeType: file.type,
-
-                    reg_branch_selected: form.reg_branch_selected.value,
-                    
-                    prefix: form.prefix.value,
-                    name: form.name.value,
-                    lastname: form.lastname.value,
-                    nickname:form.nickname.value,
-                    birthday: form.birthday.value,
-                    idcard: form.idcard.value,
-                    race: form.race.value,
-                    nationality: form.nationality.value,
-                    religion: form.religion.value,
-                    weight: form.weight.value,
-                    height: form.height.value,
-                    student_phone: form.student_phone.value,
-                    student_lineid: form.student_lineid.value,
-
-                    old_grad: form.old_grad.value,
-                    school: form.school.value,
-                    schoolProvince: form.schoolProvince.value,
-
-                    house_no: form.house_no.value,
-                    village_no: form.village_no.value,
-                    village: form.village.value,
-                    road: form.road.value,
-                    alley: form.alley.value,
-                    district: form.district.value,
-                    amphoe: form.amphoe.value,
-                    province: form.province.value,
-                    zipcode: form.zipcode.value,
-                    
- 
-                    father: form.father.value,
-                    father_occupation: form.father_occupation.value,
-                    father_phone: form.father_phone.value,
-                    mother: form.mother.value,
-                    mother_occupation: form.mother_occupation.value,
-                    mother_phone: form.mother_phone.value,
-                    parent: form.parent.value,
-                    parent_occupation: form.parent_occupation.value,
-                    parent_phone: form.parent_phone.value,
-                    parent_relationship: form.parent_relationship.value,
-
-                    info_source: form.parent_relationship.value
-                });
-
-                fetch(`${url}?${qs}`, 
-                    {   method: "POST", 
-                        body: JSON.stringify([...new Int8Array(f.target.result)]) 
-                    })
-                    .then(res => res.json(), 
-                        setiddoc(), 
-                        document.getElementById("admissionForm").reset())
-
-                    .then(e => console.log(e))
-                    // <--- You can retrieve the returned value here.
-                    .catch(err => console.log(err));
-            }
-        });
-    </script> -->
-
-    <!-- <script>
-        const form = document.getElementById('admissionForm');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-
-            const formData= new FormData(form)
-            const url = "https://script.google.com/macros/s/AKfycbxHkB5CTMEGGeJPUCOjx19mHO3o6anL5q_bSyypBp2ZuIn8mkBWdL0Tq25qMDAtcwE6/exec"
-            fetch( url, 
-                {   method: "POST", 
-                    body: formData
-                })
-                .then(respomses => {
-                    const res=respomses.json()
-                    /* document.getElementById("admissionForm").reset()) */
-                    console.log(res)
-                })
-                    
-                    
-
-                .then(e => console.log(e))
-                // <--- You can retrieve the returned value here.
-                
-                .catch(err => console.log(err))
-        })
-    </script> -->
-
-    
-    <script>
-        
-        const form = document.getElementById('admissionForm');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-
-            const formData= new FormData(form)
-            //data.append('file1', fs.createReadStream('./image1.jpeg'), 'image1.jpeg');
-            document.getElementById("waiting").style.display="block"
-
-            const url = "https://script.google.com/macros/s/AKfycbxHkB5CTMEGGeJPUCOjx19mHO3o6anL5q_bSyypBp2ZuIn8mkBWdL0Tq25qMDAtcwE6/exec"
-            
-         
-
-            fetch(url, {
-                method: 'POST',
-                body: formData
-             })
-             .then ( (res)=> {
-                document.getElementById("waiting").style.display="none"
-                 console.log(res.status)
-                 if(res.status===200) {
+        fetch(url, {
+            method: 'POST',
+            body: formData
+            })
+            .then ( (res)=> {
+            document.getElementById("waiting").style.display="none"
+                //console.log(res.status)
+                /* if(res.status===200) {
                     Swal.fire({
                     position: 'center',
                     icon: 'success',
                     title: 'บันทึกข้อมูลเรียบร้อย 😄',
                     timer: 2500
-                    })
-                 }
-                return res.json()
-            })
-            .then(  (json)=> {
-              console.log(json)
-            })
+                })
+                } */
+            return res.json()
         })
-        
-    </script>
+        .then(  (json)=> {
+            console.log(json)
+        })
+    })
+    
+</script>
     
 
-    <!-- custom validators -->
-    <script>
-        window.validateOptions = {
-            // custom validators
-            customValidators: {
-                "checkcid": { // name of custom validator
-                    "events": [], // experimental - array containing events this validator should fire on, [] = all
-                    "validator": function (field, value, validator) { // boilerplate
-                        return new Promise(function (resolve, reject) { // boilerplate
+<!-- custom validators -->
+<script>
+    window.validateOptions = {
+        // custom validators
+        customValidators: {
+            "checkcid": { // name of custom validator
+                "events": [], // experimental - array containing events this validator should fire on, [] = all
+                "validator": function (field, value, validator) { // boilerplate
+                    return new Promise(function (resolve, reject) { // boilerplate
 
-                            // start custom validator code
-                            const validCid = checkCtzID(value)
-                            const isValid = (typeof value !== 'undefined' && /\S/.test(value) && validCid);
-                            if (isValid) {
-                                resolve();
-                            } else {
-                                reject("หมายเลขประจำตัวประชาชนไม่ถูกต้อง"); // include message in reject
-                            }
-                            // end custom validator code
-                        })
-                    }
-                },
+                        // start custom validator code
+                        const validCid = checkCtzID(value)
+                        const isValid = (typeof value !== 'undefined' && /\S/.test(value) && validCid);
+                        if (isValid) {
+                            resolve();
+                        } else {
+                            reject("หมายเลขประจำตัวประชาชนไม่ถูกต้อง"); // include message in reject
+                        }
+                        // end custom validator code
+                    })
+                }
+            },
 
-                "checkcProvince": { // name of custom validator
-                    "events": [], // experimental - array containing events this validator should fire on, [] = all
-                    "validator": function (field, value, validator) { // boilerplate
-                        return new Promise(function (resolve, reject) { // boilerplate
+            "checkcProvince": { // name of custom validator
+                "events": [], // experimental - array containing events this validator should fire on, [] = all
+                "validator": function (field, value, validator) { // boilerplate
+                    return new Promise(function (resolve, reject) { // boilerplate
 
-                            // start custom validator code
-                            const validValue = checkcProvince(value)
-                            const isValid = (typeof value !== 'undefined' && /\S/.test(value) && validValue);
-                            if (isValid) {
-                                resolve();
-                            } else {
-                                reject("ข้อมูลจังหวัดไม่ถูกต้อง"); // include message in reject
-                            }
-                            // end custom validator code
+                        // start custom validator code
+                        const validValue = checkcProvince(value)
+                        const isValid = (typeof value !== 'undefined' && /\S/.test(value) && validValue);
+                        if (isValid) {
+                            resolve();
+                        } else {
+                            reject("ข้อมูลจังหวัดไม่ถูกต้อง"); // include message in reject
+                        }
+                        // end custom validator code
 
-                        });
-                    }
-                } // end   customvalidator  
-
-            }
+                    });
+                }
+            } // end   customvalidator  
 
         }
 
+    }
 
-        function checkCtzID(id) {
-            if (id.length != 13) return false;
-            for (i = 0, sum = 0; i < 12; i++) sum += parseFloat(id.charAt(i)) * (13 - i);
-            if ((11 - (sum % 11)) % 10 != parseFloat(id.charAt(12))) return false;
-            return true;
-        }
 
-        function checkcProvince(p) {
-            const n = thaiProvinces.indexOf(p)
-            if (n >= 0) return true
-            else return false
-        }
-    </script>
+    function checkCtzID(id) {
+        if (id.length != 13) return false;
+        for (i = 0, sum = 0; i < 12; i++) sum += parseFloat(id.charAt(i)) * (13 - i);
+        if ((11 - (sum % 11)) % 10 != parseFloat(id.charAt(12))) return false;
+        return true;
+    }
+
+    function checkcProvince(p) {
+        const n = thaiProvinces.indexOf(p)
+        if (n >= 0) return true
+        else return false
+    }
+</script>
     
  <!--    <script>
         $(function () {
@@ -864,88 +745,97 @@
         });
     </script> -->
 
-    <script>
-        const dropdown = document.getElementById("schoolProvince");
-        thaiProvinces.forEach(pv => {
-            const el = document.createElement("option")
-            el.textContent = pv
-            el.value = pv
-            dropdown.appendChild(el)
-        })
-    </script>
-
-    <script>
-        const parent = document.getElementById("parent")
-        const parent_occupation = document.getElementById("parent_occupation")
-        const parent_phone = document.getElementById("parent_phone")
-        const parent_relationship=document.getElementById("relationship")
-
-        var other_parent=""
-        var other_parent_occupation=""
-        var other_parent_phone=""
-        var other_relationship=""
-        
-        document.querySelectorAll('input[name="parent_type"]').forEach(obj => {
-            obj.addEventListener("click", (e) => {
-                document.getElementById("parent_show").classList.remove("hidden")
-                const vParent = e.target.value
-
-                switch (vParent) {
-                    case "บิดา":
-                        parent.value = document.getElementById("father").value
-                        parent_occupation.value = document.getElementById("father_occupation").value
-                        parent_phone.value = document.getElementById("father_phone").value
-                        parent_relationship.value=vParent
-                        parent.readOnly = true
-                        parent_occupation.readOnly = true
-                        parent_phone.readOnly = true
-                        break;
-                    case "มารดา":
-                        parent.value = document.getElementById("mother").value
-                        parent_occupation.value = document.getElementById("mother_occupation").value
-                        parent_phone.value = document.getElementById("mother_phone").value
-                        parent_relationship.value=vParent
-                        parent.readOnly = true
-                        parent_occupation.readOnly = true
-                        parent_phone.readOnly = true
-                        parent_relationship.readOnly = true
-                        break;
-                    case "อื่นๆ":
-                        parent.readOnly = false
-                        parent_occupation.readOnly = false
-                        parent_phone.readOnly = false
-                        parent_relationship.readOnly = false
-                        parent.value = other_parent
-                        parent_occupation.value = other_parent_occupation
-                        parent_phone.value = other_parent_phone
-                        document.getElementById("relationship").value=other_relationship
-                        break;
-                }
-            })
-        })
-
-     /*    document.querySelectorAll('input[name=parent*]').forEach(obj=> {
-            obj.addEventListener("change",(e)=> {
-                console.log(e.target)
-            })
-        }) */
-
-    </script>
-
+<!-- schoolProvince    -->
 <script>
-    $.datepicker.setDefaults( $.datepicker.regional[ "th" ] );
+    const dropdown = document.getElementById("schoolProvince");
+    thaiProvinces.forEach(pv => {
+        const el = document.createElement("option")
+        el.textContent = pv
+        el.value = pv
+        dropdown.appendChild(el)
+    })
+</script>
+
+<!-- เลือกผู้ปกครอง -->
+<script>
+    const parent = document.getElementById("parent")
+    const parent_occupation = document.getElementById("parent_occupation")
+    const parent_phone = document.getElementById("parent_phone")
+    const parent_relationship=document.getElementById("relationship")
+
+    var other_parent=""
+    var other_parent_occupation=""
+    var other_parent_phone=""
+    var other_relationship=""
+    
+    document.querySelectorAll('input[name="parent_type"]').forEach(obj => {
+        obj.addEventListener("click", (e) => {
+            document.getElementById("parent_show").classList.remove("hidden")
+            const vParent = e.target.value
+
+            switch (vParent) {
+                case "บิดา":
+                    parent.value = document.getElementById("father").value
+                    parent_occupation.value = document.getElementById("father_occupation").value
+                    parent_phone.value = document.getElementById("father_phone").value
+                    parent_relationship.value=vParent
+                    parent.readOnly = true
+                    parent_occupation.readOnly = true
+                    parent_phone.readOnly = true
+                    break;
+                case "มารดา":
+                    parent.value = document.getElementById("mother").value
+                    parent_occupation.value = document.getElementById("mother_occupation").value
+                    parent_phone.value = document.getElementById("mother_phone").value
+                    parent_relationship.value=vParent
+                    parent.readOnly = true
+                    parent_occupation.readOnly = true
+                    parent_phone.readOnly = true
+                    parent_relationship.readOnly = true
+                    break;
+                case "อื่นๆ":
+                    parent.readOnly = false
+                    parent_occupation.readOnly = false
+                    parent_phone.readOnly = false
+                    parent_relationship.readOnly = false
+                    parent.value = other_parent
+                    parent_occupation.value = other_parent_occupation
+                    parent_phone.value = other_parent_phone
+                    document.getElementById("relationship").value=other_relationship
+                    break;
+            }
+        })
+    })
+
+    /*    document.querySelectorAll('input[name=parent*]').forEach(obj=> {
+        obj.addEventListener("change",(e)=> {
+            console.log(e.target)
+        })
+    }) */
+
+</script>
+
+<!-- datepicker -->
+<script>
+    $.datepicker.setDefaults( $.datepicker.regional[ "th" ] 
+    );
     const currentDate = new Date();
+    const fullmonthnames =  $.datepicker.regional[ "th" ].monthNames
 
     currentDate.setYear(currentDate.getFullYear() + 543);
-    // Birth date
-    $("#birthday").datepicker({
+    $("#dob").datepicker({
+        monthNamesShort: fullmonthnames,
         changeMonth: true,
         changeYear: true,
-        yearRange: '+493:+543',
+        yearRange: '+500:+543',
         dateFormat: 'dd/mm/yy',
-    });
+        
+    })
+    //$('#dob').datepicker("setDate","01/01/2532" )
     
 </script>
+
+<!-- เลือก ระดับ และสาขาที่จะสมัครเรียน -->
 <script>
     document.querySelectorAll('input[name="reg_type"]').forEach(obj => {
         let lv=""
@@ -997,7 +887,7 @@
 			}); 
 	 
 			$('.scrollup').click(function(){
-				$("html, body").animate({ scrollTop: 0 }, 600);
+				$("html, body").animate({ scrollTop: 0 }, 600)
 				return false;
 			});
 	 
@@ -1007,35 +897,46 @@
 
 <!-- upload files -->
 <script>
-    const date = new Date()
-    const ct= ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + ""+((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + ""+ (date.getFullYear()+543)
-
-    const upFiles = document.querySelectorAll("input[id^=uploadfile]");
+    const upFiles = document.querySelectorAll("input[id^=uploadfile]")
     
     upFiles.forEach((f,i) => {
         f.addEventListener("change", (e) => {
-            const pv="preview"+(i+1)
-
+            const date = new Date()
+            const ct= ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + ""+((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + ""+ (date.getFullYear()+543)
             const xname = document.getElementById("name").value;
             const xlastname = document.getElementById("lastname").value;
             const filename="IMG_" +(i+1) + "_" + xname + "." + xlastname + "." + ct
 
+            const pv="preview"+(i+1)
             document.getElementById(pv).classList.remove("hidden")
+            
+            //displayPreview(f,tm,(i+1))
 
-            const url= URL.createObjectURL(e.target.files[0])
-            document.getElementById(pv).src = url
+            const file = e.target.files[0]
+            const fr = new FileReader();
+            fr.fileName = filename
+            fr.onload = (e) => {
+                let html = '<input type="hidden" name="dataUpfile'+(i+1)+'" value="' + e.target.result.replace(/^.*,/, '') + '" >';
+                html += '<input type="hidden" name="mimetypeUpfile'+(i+1)+'" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
+                html += '<input type="hidden" name="filenameUpfile'+(i+1)+'" value="' + filename + '" >';
+                document.getElementById("dataFile"+(i+1)).innerHTML = html
 
-            const fn="filename"+(i+1)
-            document.getElementById(fn).value=filename
-        });
-    });
+                const url= e.target.result
+                document.getElementById(pv).src = url    
+            }
+            fr.readAsDataURL(file)
+
+        })
+    })
 </script>
 
+<!-- กลับด้านบน -->
 <script>
     function gotoTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
+
 </body>
 
 </html>
