@@ -1,7 +1,7 @@
 .header {
     position: sticky;
     top: 0px;
-    z-index: 999;
+    z-index: 99;
     max-height: 72px;
     padding-top: 5px;
 }
@@ -205,4 +205,5 @@ input[type=number] {
     background-size: 150px;
     background-color: black;
     opacity: 0.87;
+    z-index: 999;
 }
