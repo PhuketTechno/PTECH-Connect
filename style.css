@@ -110,6 +110,11 @@ fa-map-marked-alt {
   text-decoration: none;
 }
 
+.rounded-social-buttons .social-button.admission {
+  background: #fe851b;
+}
+
+
 .rounded-social-buttons .social-button.facebook {
   background: #3b5998;
 }
