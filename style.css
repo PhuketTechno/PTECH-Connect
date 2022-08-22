@@ -131,6 +131,10 @@ fa-map-marked-alt {
   background: #00b900;
 }
 
+.rounded-social-buttons .social-button.discord {
+  background: #7289da;
+}
+
 .rounded-social-buttons .social-button.instagram {
   background: #dd2a7b;
 }
