@@ -14,7 +14,8 @@ body {
 	left: 0;
 	right: 0;
 	z-index: 1;
-	
+	max-width: 100%;
+  height: auto;
 }
 
 .header--logo {
@@ -22,7 +23,7 @@ body {
 	height: 55px;
 }
 .headtxt {
-    font-size: 5vw;
+	font-size: 2vw;
     margin-top: -65px;
     margin-left: 60px;
     font-weight: bold;
