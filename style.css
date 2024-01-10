@@ -23,7 +23,7 @@ body {
 	height: 55px;
 }
 .headtxt {
-    font-size: 2vw;
+   font-size: calc(0.75em + 1vmin);
     margin-top: -65px;
     margin-left: 75px;
     font-weight: bold;
