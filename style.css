@@ -23,9 +23,9 @@ body {
 	height: 55px;
 }
 .headtxt {
-	/* font-size: 2vw; */
+    font-size: 4vw;
     margin-top: -65px;
-    margin-left: 60px;
+    margin-left: 75px;
     font-weight: bold;
     font-family: 'Anuphan', sans-serif;
 }
