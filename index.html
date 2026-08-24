@@ -1,123 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/957/957310.png">	
-    <title>PTECH Connect</title>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" data-keep-original-source="false"></script>
-    <link rel="stylesheet" href="./style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Anuphan&display=swap" rel="stylesheet">
+    <title>PTECH Connect | วิทยาลัยเทคโนโลยีภูเก็ต</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/957/957310.png">
+
+    <!-- Fonts & Icons (Preconnect for faster loading) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" defer></script>
+
+    <style>
+        /* CSS ตัวใหม่ สไตล์ Modern & Glassmorphism */
+        :root {
+            /* Teal-Dark Dynamic Gradient */
+            --bg-color-1: #071A1E;
+            --bg-color-2: #164245;
+            --bg-color-3: #0F6366;
+            --bg-color-4: #0A2F32;
+
+            --card-bg: rgba(15, 40, 42, 0.6);
+            --card-hover: rgba(25, 65, 68, 0.85);
+            --text-main: #FFFFFF;
+            --text-muted: #A4BFC2;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Anuphan', sans-serif;
+            background: linear-gradient(-45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3), var(--bg-color-4));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        /* Container สำหรับจัดหน้าให้อยู่ตรงกลางและดูเหมือน App */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(10, 20, 22, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 255, 204, 0.15);
+            text-align: center;
+        }
+
+        /* Header Profile */
+        .profile {
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(0, 255, 204, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 255, 204, 0.15);
+            margin-bottom: 1rem;
+        }
+
+        .profile h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Links Grid */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 255, 204, 0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+            box-shadow: 0 10px 25px rgba(0, 255, 204, 0.2);
+            border-color: rgba(0, 255, 204, 0.4);
+        }
+
+        .link-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .link-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        /* Brand Colors for Icons */
+        .admission .link-icon {
+            color: #f39c12;
+        }
+
+        .line .link-icon {
+            color: #00B900;
+        }
+
+        .globe .link-icon {
+            color: #2980b9;
+        }
+
+        .facebook .link-icon {
+            color: #1877F2;
+        }
+
+        .discord .link-icon {
+            color: #5865F2;
+        }
+
+        .messenger .link-icon {
+            color: #00B2FF;
+        }
+
+        .map .link-icon {
+            color: #EA4335;
+        }
+
+        .instagram .link-icon i {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #799C9E;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer strong {
+            color: #C0DEE0;
+        }
+    </style>
 </head>
+
 <body>
-   
-<header  class="header">
-	<img class="header--logo" src="https://i.imgur.com/UAjSV3Nm.jpg" />
-	<div class="headtxt">ช่องทางการติดต่อกับ<br> วิทยาลัยเทคโนโลยีภูเก็ต</div>
-</header >
-<main class="main">
 
-	<div class="content">
-		<div class="rounded-social-buttons row_item">
-			<a href="https://ptech.pages.dev/admission/" target=" _blank">
-			<div class="social-button admission">
-				<i class="fa-solid fa-pen-to-square"></i>
-			</div> สมัครนักเรียนออนไลน์
-			</a>
-		<br>
-		</div>
-		<div class="rounded-social-buttons row_item">
-			<a href="https://lin.ee/90qXbyR" target=" _blank">
-				<div class="social-button line">
-					<i class="fab fa-line"></i>
-				</div> LINE สมัครเรียน 2570
-			</a>
-			<br>
-		</div> 
-		
-		<div class="rounded-social-buttons row_item">
-			<a href="https://www.ptech.ac.th/" target=" _blank">
-				<div class="social-button globe">
-					<i class="fas fa-globe"></i>
-				</div> www.ptech.ac.th
-			</a>
-			<br>
-		</div>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="profile">
+            <img class="profile-img" src="https://lh3.googleusercontent.com/d/1hQmJz3B281BiRsrDluYP7HVpabqNPhqF=w200"
+                alt="PTECH Logo">
+            <h1>วิทยาลัยเทคโนโลยีภูเก็ต</h1>
+            <p>PTECH Connect - ช่องทางการติดต่อ</p>
+        </header>
 
-		<div class="rounded-social-buttons row_item">
-			<a href="https://www.facebook.com/PhuketTechno/" target="_blank">
-				<div class="social-button facebook">
-					<i class="fab fa-facebook-f"></i>
-				</div> วิทยาลัยเทคโนโลยีภูเก็ต
-			</a>
-			<br>
-		</div>
+        <!-- Links Section -->
+        <main class="links-container" id="links-container">
+            <!-- Links will be injected here by JavaScript -->
+            <div style="text-align: center; color: var(--text-muted); padding: 1rem;">กำลังโหลดข้อมูล...</div>
+        </main>
 
-		<div class="rounded-social-buttons row_item">
-			<a href="https://discord.gg/pV4SYmHnNm?openExternalBrowser=1" target=" _blank">
-				<div class="social-button discord">
-					<i class="fa-brands fa-discord"></i>
-				</div> Discord
-			</a>
-			<br>
-		</div>
-		<div class="rounded-social-buttons row_item">
-			<a href="https://www.instagram.com/phukettechno/?openExternalBrowser=1" target=" _blank">
-				<div class="social-button instagram">
-					<i class="fab fa-instagram"></i>
-				</div> Instagram
-			</a>
-			<br>
-		</div>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p><strong>วิทยาลัยเทคโนโลยีภูเก็ต</strong> <br> 224/9 ถ.เทพกระษัตรี ต.ตลาดใหญ่ อ.เมือง จ.ภูเก็ต 83000</p>
+            <p>Email: PhuketTechno@gmail.com</p>
+            <p>โทรศัพท์: 076-215419, 076-214147</p>
+        </footer>
+    </div>
 
-		<div class="rounded-social-buttons row_item">
-			<a href="https://m.me/PhuketTechno/?openExternalBrowser=1" target=" _blank">
-				<div class="social-button facebook-messenger">
-					<i class="fab fa-facebook-messenger"></i>
-				</div> Messenger
-			</a>
-			<br>
-		</div>
+    <!-- Default Statcounter code for PTECH Connec -->
+    <script type="text/javascript">
+        var sc_project = 12883466;
+        var sc_invisible = 1;
+        var sc_security = "d76bedab"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="free hit
+counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+                    src="https://c.statcounter.com/12883466/0/d76bedab/1/" alt="free hit counter"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>
+    <!-- End of Statcounter Code -->
 
-		<div class="rounded-social-buttons row_item">
-			<a href="https://maps.app.goo.gl/LT7YUZw5c2QP9tM98?openExternalBrowser=1" target=" _blank">
-				<div class="social-button map">
-					<i class="fas fa-map-marked-alt"></i>
-				</div> แผนที่
-			</a>
-			<br>
-		</div>
+    <!-- Script to fetch links -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('links.json' + '?v=' + new Date().getTime()); // Prevent caching
+                const links = await response.json();
 
-</main>
+                const container = document.getElementById('links-container');
+                container.innerHTML = ''; // Clear loading message
 
-<footer class="footer">
-	<p class="footer--text"><strong>วิทยาลัยเทคโนโลยีภูเก็ต</strong> <br> 224/9 ถนนเทพกระษัตรี ตำบลตลาดใหญ่ อำเภอเมือง จังหวัดภูเก็ต 83000</p>
-	<p class="footer--text">Email: PhuketTechno@gmail.com</p>
-	<p class="footer--text">โทรศัพท์. 076-215419, 076-214147</p>
-
-</footer>
-    
-<!-- Default Statcounter code for PTECH Connect
-https://ptech-connect.netlify.app/ -->
-<script type="text/javascript">
-var sc_project=12883466; 
-var sc_invisible=1; 
-var sc_security="d76bedab"; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="free hit
-counter" href="https://statcounter.com/"
-target="_blank"><img class="statcounter"
-src="https://c.statcounter.com/12883466/0/d76bedab/1/"
-alt="free hit counter"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
-	
+                links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.target = '_blank';
+                    a.className = `link-card ${link.class}`;
+                    a.innerHTML = `
+                        <div class="link-icon"><i class="${link.icon}"></i></div>
+                        <span class="link-text">${link.title}</span>
+                    `;
+                    container.appendChild(a);
+                });
+            } catch (error) {
+                console.error('Error loading links:', error);
+                const container = document.getElementById('links-container');
+                container.innerHTML = '<div style="text-align: center; color: #fff;">ไม่สามารถโหลดข้อมูลลิงก์ได้</div>';
+            }
+        });
+    </script>
 
 </body>
+
 </html>
