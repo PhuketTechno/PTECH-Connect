@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/957/957310.png">	
+    <title>PTECH Connect</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" data-keep-original-source="false"></script>
+    <link rel="stylesheet" href="./style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Anuphan&display=swap" rel="stylesheet">
+</head>
+<body>
+   
+<header  class="header">
+	<img class="header--logo" src="https://i.imgur.com/UAjSV3Nm.jpg" />
+	<div class="headtxt">ช่องทางการติดต่อกับ<br> วิทยาลัยเทคโนโลยีภูเก็ต</div>
+</header >
+<main class="main">
+
+	<div class="content">
+		<div class="rounded-social-buttons row_item">
+			<a href="https://ptech.pages.dev/admission/" target=" _blank">
+			<div class="social-button admission">
+				<i class="fa-solid fa-pen-to-square"></i>
+			</div> สมัครนักเรียนออนไลน์
+			</a>
+		<br>
+		</div>
+		<div class="rounded-social-buttons row_item">
+			<a href="https://lin.ee/90qXbyR" target=" _blank">
+				<div class="social-button line">
+					<i class="fab fa-line"></i>
+				</div> LINE สมัครเรียน 2570
+			</a>
+			<br>
+		</div> 
+		
+		<div class="rounded-social-buttons row_item">
+			<a href="https://www.ptech.ac.th/" target=" _blank">
+				<div class="social-button globe">
+					<i class="fas fa-globe"></i>
+				</div> www.ptech.ac.th
+			</a>
+			<br>
+		</div>
+
+		<div class="rounded-social-buttons row_item">
+			<a href="https://www.facebook.com/qr?id=100063649956285" target="_blank">
+				<div class="social-button facebook">
+					<i class="fab fa-facebook-f"></i>
+				</div> วิทยาลัยเทคโนโลยีภูเก็ต
+			</a>
+			<br>
+		</div>
+
+		<div class="rounded-social-buttons row_item">
+			<a href="https://discord.gg/pV4SYmHnNm?openExternalBrowser=1" target=" _blank">
+				<div class="social-button discord">
+					<i class="fa-brands fa-discord"></i>
+				</div> Discord
+			</a>
+			<br>
+		</div>
+		<div class="rounded-social-buttons row_item">
+			<a href="https://www.instagram.com/phukettechno/?openExternalBrowser=1" target=" _blank">
+				<div class="social-button instagram">
+					<i class="fab fa-instagram"></i>
+				</div> Instagram
+			</a>
+			<br>
+		</div>
+
+		<div class="rounded-social-buttons row_item">
+			<a href="https://m.me/PhuketTechno/?openExternalBrowser=1" target=" _blank">
+				<div class="social-button facebook-messenger">
+					<i class="fab fa-facebook-messenger"></i>
+				</div> Messenger
+			</a>
+			<br>
+		</div>
+
+		<div class="rounded-social-buttons row_item">
+			<a href="https://maps.app.goo.gl/LT7YUZw5c2QP9tM98?openExternalBrowser=1" target=" _blank">
+				<div class="social-button map">
+					<i class="fas fa-map-marked-alt"></i>
+				</div> แผนที่
+			</a>
+			<br>
+		</div>
+
+</main>
+
+<footer class="footer">
+	<p class="footer--text"><strong>วิทยาลัยเทคโนโลยีภูเก็ต</strong> <br> 224/9 ถนนเทพกระษัตรี ตำบลตลาดใหญ่ อำเภอเมือง จังหวัดภูเก็ต 83000</p>
+	<p class="footer--text">Email: PhuketTechno@gmail.com</p>
+	<p class="footer--text">โทรศัพท์. 076-215419, 076-214147</p>
+
+</footer>
+    
+<!-- Default Statcounter code for PTECH Connect
+https://ptech-connect.netlify.app/ -->
+<script type="text/javascript">
+var sc_project=12883466; 
+var sc_invisible=1; 
+var sc_security="d76bedab"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="free hit
+counter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12883466/0/d76bedab/1/"
+alt="free hit counter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+	
+
+</body>
+</html>
+
+redesign this portal, ทันสมัย ดูดี ,use html css ,โหลดเร็ว
