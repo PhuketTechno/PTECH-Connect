@@ -84,7 +84,7 @@
         /* Header Profile */
         .profile {
             position: sticky;
-            top: 1rem;
+            top: 0;
             z-index: 100;
             padding: 1.5rem 1rem;
             margin-bottom: 2rem;
@@ -94,6 +94,10 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(0, 255, 204, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .profile-img {
@@ -104,18 +108,48 @@
             border: 3px solid rgba(0, 255, 204, 0.4);
             box-shadow: 0 4px 20px rgba(0, 255, 204, 0.15);
             margin-bottom: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .profile h1 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #FFFFFF;
             margin-bottom: 0.25rem;
+            transition: all 0.3s ease;
         }
 
         .profile p {
             font-size: 0.95rem;
             color: var(--text-muted);
+            margin: 0;
+            max-height: 30px;
+            opacity: 1;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Scrolled (Compact) State */
+        .profile.compact {
+            padding: 0.5rem 1rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .profile.compact .profile-img {
+            width: 45px;
+            height: 45px;
+            border-width: 2px;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile.compact h1 {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .profile.compact p {
+            max-height: 0;
+            opacity: 0;
         }
 
         /* Links Grid */
@@ -217,7 +251,7 @@
 
     <div class="container">
         <!-- Header Section -->
-        <header class="profile">
+        <header class="profile" id="profile">
             <img class="profile-img" src="https://lh3.googleusercontent.com/d/1hQmJz3B281BiRsrDluYP7HVpabqNPhqF=w200"
                 alt="PTECH Logo">
             <h1>วิทยาลัยเทคโนโลยีภูเก็ต</h1>
@@ -253,9 +287,20 @@ counter" href="https://statcounter.com/" target="_blank"><img class="statcounter
     </noscript>
     <!-- End of Statcounter Code -->
 
-    <!-- Script to fetch links -->
+    <!-- Script to fetch links & Header Scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
+            // Profile scroll compact effect
+            const profile = document.getElementById('profile');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 30) {
+                    profile.classList.add('compact');
+                } else {
+                    profile.classList.remove('compact');
+                }
+            });
+
+            // Fetch links logic
             try {
                 const response = await fetch('links.json' + '?v=' + new Date().getTime()); // Prevent caching
                 const links = await response.json();
