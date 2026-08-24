@@ -94,10 +94,11 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(0, 255, 204, 0.2);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
+            will-change: padding;
         }
 
         .profile-img {
@@ -108,7 +109,8 @@
             border: 3px solid rgba(0, 255, 204, 0.4);
             box-shadow: 0 4px 20px rgba(0, 255, 204, 0.15);
             margin-bottom: 1rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: width, height;
         }
 
         .profile h1 {
@@ -116,30 +118,32 @@
             font-weight: 700;
             color: #FFFFFF;
             margin-bottom: 0.25rem;
-            transition: all 0.3s ease;
+            transition: font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: font-size;
         }
 
         .profile p {
             font-size: 0.95rem;
             color: var(--text-muted);
             margin: 0;
-            max-height: 30px;
+            max-height: 40px;
             opacity: 1;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            will-change: max-height, opacity;
         }
 
         /* Scrolled (Compact) State */
         .profile.compact {
-            padding: 0.5rem 1rem;
-            border-radius: 0 0 20px 20px;
+            padding: 0.75rem 1rem;
+            border-radius: 0 0 24px 24px;
         }
 
         .profile.compact .profile-img {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-width: 2px;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
         }
 
         .profile.compact h1 {
@@ -250,6 +254,10 @@
 <body>
 
     <div class="container">
+        <!-- Sentinel for scroll tracking (prevents jitter) -->
+        <div id="scroll-sentinel"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 1px; visibility: hidden;"></div>
+
         <!-- Header Section -->
         <header class="profile" id="profile">
             <img class="profile-img" src="https://lh3.googleusercontent.com/d/1hQmJz3B281BiRsrDluYP7HVpabqNPhqF=w200"
@@ -290,15 +298,25 @@ counter" href="https://statcounter.com/" target="_blank"><img class="statcounter
     <!-- Script to fetch links & Header Scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            // Profile scroll compact effect
+            // Profile scroll compact effect (Perfectly smooth using IntersectionObserver)
             const profile = document.getElementById('profile');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 30) {
+            const sentinel = document.getElementById('scroll-sentinel');
+
+            const observer = new IntersectionObserver((entries) => {
+                // If sentinel is hidden off browser top, enable compact mode
+                if (!entries[0].isIntersecting) {
                     profile.classList.add('compact');
                 } else {
                     profile.classList.remove('compact');
                 }
+            }, {
+                root: null, // Relative to browser viewport
+                threshold: 0,
+                // Adjust trigger point right at the normal top edge
+                rootMargin: "-10px 0px 0px 0px"
             });
+
+            if (sentinel) observer.observe(sentinel);
 
             // Fetch links logic
             try {
