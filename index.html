@@ -52,7 +52,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NEW: Animated Background Elements --- */
+        /* --- Animated Background --- */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -61,63 +61,72 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background: linear-gradient(-45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-4));
+            background: linear-gradient(-45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3), var(--bg-color-4));
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.5;
+            opacity: 0.55;
             animation: float 12s infinite ease-in-out alternate;
+            will-change: transform;
         }
 
         .blob-1 {
-            width: 350px;
-            height: 350px;
+            width: 380px;
+            height: 380px;
             background: #00FFCC;
-            /* Bright Neon Cyan */
-            top: -10%;
-            left: -10%;
-            animation-duration: 15s;
+            top: -12%;
+            left: -12%;
+            animation-duration: 14s;
         }
 
         .blob-2 {
-            width: 450px;
-            height: 450px;
+            width: 480px;
+            height: 480px;
             background: #0F6366;
-            /* Deep Teal */
-            bottom: -20%;
-            right: -10%;
-            animation-duration: 18s;
+            bottom: -22%;
+            right: -12%;
+            animation-duration: 17s;
             animation-direction: alternate-reverse;
         }
 
         .blob-3 {
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
             background: #164245;
-            /* Medium Teal */
-            top: 40%;
-            left: 60%;
+            top: 38%;
+            left: 58%;
             animation-duration: 20s;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes float {
             0% {
                 transform: translate(0, 0) scale(1);
             }
-
             33% {
-                transform: translate(30px, -50px) scale(1.1);
+                transform: translate(40px, -60px) scale(1.12);
             }
-
             66% {
-                transform: translate(-20px, 20px) scale(0.9);
+                transform: translate(-30px, 30px) scale(0.88);
             }
-
             100% {
-                transform: translate(40px, 30px) scale(1.05);
+                transform: translate(50px, 40px) scale(1.08);
             }
         }
 
