@@ -32,20 +32,6 @@
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -54,10 +40,7 @@
 
         body {
             font-family: 'Anuphan', sans-serif;
-            background: linear-gradient(-45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3), var(--bg-color-4));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            background-attachment: fixed;
+            background-color: var(--bg-color-1);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -65,7 +48,65 @@
             align-items: flex-start;
             padding: 2rem 1rem;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* --- NEW: Animated Background Elements --- */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(-45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-4));
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 12s infinite ease-in-out alternate;
+        }
+
+        .blob-1 {
+            width: 350px;
+            height: 350px;
+            background: #00FFCC; /* Bright Neon Cyan */
+            top: -10%;
+            left: -10%;
+            animation-duration: 15s;
+        }
+
+        .blob-2 {
+            width: 450px;
+            height: 450px;
+            background: #0F6366; /* Deep Teal */
+            bottom: -20%;
+            right: -10%;
+            animation-duration: 18s;
+            animation-direction: alternate-reverse;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: #164245; /* Medium Teal */
+            top: 40%;
+            left: 60%;
+            animation-duration: 20s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(40px, 30px) scale(1.05); }
+        }
+        /* ----------------------------------------- */
 
         /* Container สำหรับจัดหน้าให้อยู่ตรงกลางและดูเหมือน App */
         .container {
@@ -79,6 +120,7 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(0, 255, 204, 0.15);
             text-align: center;
+            z-index: 1; /* Keep above background */
         }
 
         /* Header Profile */
@@ -94,7 +136,6 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(0, 255, 204, 0.2);
-            /* Unified, slightly faster transition for a snappier feel */
             transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
             flex-direction: column;
@@ -128,7 +169,6 @@
             max-height: 40px;
             opacity: 1;
             overflow: hidden;
-            /* Opacity fades out faster than the height shrinks to avoid text squishing */
             transition: opacity 0.2s ease-out, max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -200,34 +240,13 @@
         }
 
         /* Brand Colors for Icons */
-        .admission .link-icon {
-            color: #f39c12;
-        }
-
-        .line .link-icon {
-            color: #00B900;
-        }
-
-        .globe .link-icon {
-            color: #2980b9;
-        }
-
-        .facebook .link-icon {
-            color: #1877F2;
-        }
-
-        .discord .link-icon {
-            color: #5865F2;
-        }
-
-        .messenger .link-icon {
-            color: #00B2FF;
-        }
-
-        .map .link-icon {
-            color: #EA4335;
-        }
-
+        .admission .link-icon { color: #f39c12; }
+        .line .link-icon { color: #00B900; }
+        .globe .link-icon { color: #2980b9; }
+        .facebook .link-icon { color: #1877F2; }
+        .discord .link-icon { color: #5865F2; }
+        .messenger .link-icon { color: #00B2FF; }
+        .map .link-icon { color: #EA4335; }
         .instagram .link-icon i {
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             -webkit-background-clip: text;
@@ -254,6 +273,13 @@
 
 <body>
 
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
     <div class="container">
         <!-- Header Section -->
         <header class="profile" id="profile">
@@ -265,7 +291,6 @@
 
         <!-- Links Section -->
         <main class="links-container" id="links-container">
-            <!-- Links will be injected here by JavaScript -->
             <div style="text-align: center; color: var(--text-muted); padding: 1rem;">กำลังโหลดข้อมูล...</div>
         </main>
 
