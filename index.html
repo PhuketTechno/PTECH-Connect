@@ -94,11 +94,12 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(0, 255, 204, 0.2);
-            transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Unified, slightly faster transition for a snappier feel */
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            will-change: padding;
+            transform-origin: top;
         }
 
         .profile-img {
@@ -109,8 +110,7 @@
             border: 3px solid rgba(0, 255, 204, 0.4);
             box-shadow: 0 4px 20px rgba(0, 255, 204, 0.15);
             margin-bottom: 1rem;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: width, height;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .profile h1 {
@@ -118,8 +118,7 @@
             font-weight: 700;
             color: #FFFFFF;
             margin-bottom: 0.25rem;
-            transition: font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: font-size;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .profile p {
@@ -129,21 +128,22 @@
             max-height: 40px;
             opacity: 1;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-            will-change: max-height, opacity;
+            /* Opacity fades out faster than the height shrinks to avoid text squishing */
+            transition: opacity 0.2s ease-out, max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* Scrolled (Compact) State */
         .profile.compact {
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 1rem;
             border-radius: 0 0 24px 24px;
+            margin-bottom: 1rem;
         }
 
         .profile.compact .profile-img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-width: 2px;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.25rem;
         }
 
         .profile.compact h1 {
@@ -154,6 +154,7 @@
         .profile.compact p {
             max-height: 0;
             opacity: 0;
+            margin: 0;
         }
 
         /* Links Grid */
@@ -254,10 +255,6 @@
 <body>
 
     <div class="container">
-        <!-- Sentinel for scroll tracking (prevents jitter) -->
-        <div id="scroll-sentinel"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 1px; visibility: hidden;"></div>
-
         <!-- Header Section -->
         <header class="profile" id="profile">
             <img class="profile-img" src="https://lh3.googleusercontent.com/d/1hQmJz3B281BiRsrDluYP7HVpabqNPhqF=w200"
@@ -298,33 +295,24 @@ counter" href="https://statcounter.com/" target="_blank"><img class="statcounter
     <!-- Script to fetch links & Header Scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            // Profile scroll compact effect (Perfectly smooth using IntersectionObserver)
             const profile = document.getElementById('profile');
-            const sentinel = document.getElementById('scroll-sentinel');
-
-            const observer = new IntersectionObserver((entries) => {
-                // If sentinel is hidden off browser top, enable compact mode
-                if (!entries[0].isIntersecting) {
+            
+            // Immediate scroll listener for a more responsive trigger
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
                     profile.classList.add('compact');
                 } else {
                     profile.classList.remove('compact');
                 }
-            }, {
-                root: null, // Relative to browser viewport
-                threshold: 0,
-                // Adjust trigger point right at the normal top edge
-                rootMargin: "-10px 0px 0px 0px"
-            });
-
-            if (sentinel) observer.observe(sentinel);
+            }, { passive: true }); // Passive true improves scroll performance
 
             // Fetch links logic
             try {
-                const response = await fetch('links.json' + '?v=' + new Date().getTime()); // Prevent caching
+                const response = await fetch('./links.json' + '?v=' + new Date().getTime());
                 const links = await response.json();
 
                 const container = document.getElementById('links-container');
-                container.innerHTML = ''; // Clear loading message
+                container.innerHTML = ''; 
 
                 links.forEach(link => {
                     const a = document.createElement('a');
