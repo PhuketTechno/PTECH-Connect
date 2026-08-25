@@ -75,7 +75,8 @@
         .blob-1 {
             width: 350px;
             height: 350px;
-            background: #00FFCC; /* Bright Neon Cyan */
+            background: #00FFCC;
+            /* Bright Neon Cyan */
             top: -10%;
             left: -10%;
             animation-duration: 15s;
@@ -84,7 +85,8 @@
         .blob-2 {
             width: 450px;
             height: 450px;
-            background: #0F6366; /* Deep Teal */
+            background: #0F6366;
+            /* Deep Teal */
             bottom: -20%;
             right: -10%;
             animation-duration: 18s;
@@ -94,18 +96,31 @@
         .blob-3 {
             width: 300px;
             height: 300px;
-            background: #164245; /* Medium Teal */
+            background: #164245;
+            /* Medium Teal */
             top: 40%;
             left: 60%;
             animation-duration: 20s;
         }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(40px, 30px) scale(1.05); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(40px, 30px) scale(1.05);
+            }
         }
+
         /* ----------------------------------------- */
 
         /* Container สำหรับจัดหน้าให้อยู่ตรงกลางและดูเหมือน App */
@@ -120,7 +135,8 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(0, 255, 204, 0.15);
             text-align: center;
-            z-index: 1; /* Keep above background */
+            z-index: 1;
+            /* Keep above background */
         }
 
         /* Header Profile */
@@ -136,7 +152,6 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(0, 255, 204, 0.2);
-            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -151,7 +166,6 @@
             border: 3px solid rgba(0, 255, 204, 0.4);
             box-shadow: 0 4px 20px rgba(0, 255, 204, 0.15);
             margin-bottom: 1rem;
-            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .profile h1 {
@@ -159,7 +173,6 @@
             font-weight: 700;
             color: #FFFFFF;
             margin-bottom: 0.25rem;
-            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .profile p {
@@ -169,7 +182,6 @@
             max-height: 40px;
             opacity: 1;
             overflow: hidden;
-            transition: opacity 0.2s ease-out, max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* Scrolled (Compact) State */
@@ -240,13 +252,34 @@
         }
 
         /* Brand Colors for Icons */
-        .admission .link-icon { color: #f39c12; }
-        .line .link-icon { color: #00B900; }
-        .globe .link-icon { color: #2980b9; }
-        .facebook .link-icon { color: #1877F2; }
-        .discord .link-icon { color: #5865F2; }
-        .messenger .link-icon { color: #00B2FF; }
-        .map .link-icon { color: #EA4335; }
+        .admission .link-icon {
+            color: #f39c12;
+        }
+
+        .line .link-icon {
+            color: #00B900;
+        }
+
+        .globe .link-icon {
+            color: #2980b9;
+        }
+
+        .facebook .link-icon {
+            color: #1877F2;
+        }
+
+        .discord .link-icon {
+            color: #5865F2;
+        }
+
+        .messenger .link-icon {
+            color: #00B2FF;
+        }
+
+        .map .link-icon {
+            color: #EA4335;
+        }
+
         .instagram .link-icon i {
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             -webkit-background-clip: text;
@@ -321,7 +354,7 @@ counter" href="https://statcounter.com/" target="_blank"><img class="statcounter
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const profile = document.getElementById('profile');
-            
+
             // Immediate scroll listener for a more responsive trigger
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
@@ -337,7 +370,7 @@ counter" href="https://statcounter.com/" target="_blank"><img class="statcounter
                 const links = await response.json();
 
                 const container = document.getElementById('links-container');
-                container.innerHTML = ''; 
+                container.innerHTML = '';
 
                 links.forEach(link => {
                     const a = document.createElement('a');
