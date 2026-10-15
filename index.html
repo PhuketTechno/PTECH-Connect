@@ -2,404 +2,301 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTECH Connect | วิทยาลัยเทคโนโลยีภูเก็ต</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PTECH Connect | วิทยาลัยเทคโนโลยีภูเก็ต</title>
+  <meta name="description"
+    content="ศูนย์รวมช่องทางการติดต่อและสมัครเรียนออนไลน์ วิทยาลัยเทคโนโลยีภูเก็ต (PTECH Connect)" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/957/957310.png">
+  <!-- Google Fonts: Prompt (Thai) & Fredoka (English Neo-Geometric) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Prompt:wght@500;600;700&display=swap"
+    rel="stylesheet">
 
-    <!-- Fonts & Icons (Preconnect for faster loading) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" defer></script>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        /* CSS ตัวใหม่ สไตล์ Modern & Glassmorphism */
-        :root {
-            /* Teal-Dark Dynamic Gradient */
-            --bg-color-1: #071A1E;
-            --bg-color-2: #164245;
-            --bg-color-3: #0F6366;
-            --bg-color-4: #0A2F32;
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-            --card-bg: rgba(15, 40, 42, 0.6);
-            --card-hover: rgba(25, 65, 68, 0.85);
-            --text-main: #FFFFFF;
-            --text-muted: #A4BFC2;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Anuphan', sans-serif;
-            background-color: var(--bg-color-1);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 2rem 1rem;
-            line-height: 1.6;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* --- Animated Background --- */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: linear-gradient(-45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3), var(--bg-color-4));
-            background-size: 400% 400%;
-            animation: gradientShift 18s ease infinite;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.55;
-            animation: float 12s infinite ease-in-out alternate;
-            will-change: transform;
-        }
-
-        .blob-1 {
-            width: 380px;
-            height: 380px;
-            background: #00FFCC;
-            top: -12%;
-            left: -12%;
-            animation-duration: 14s;
-        }
-
-        .blob-2 {
-            width: 480px;
-            height: 480px;
-            background: #0F6366;
-            bottom: -22%;
-            right: -12%;
-            animation-duration: 17s;
-            animation-direction: alternate-reverse;
-        }
-
-        .blob-3 {
-            width: 320px;
-            height: 320px;
-            background: #164245;
-            top: 38%;
-            left: 58%;
-            animation-duration: 20s;
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(40px, -60px) scale(1.12);
-            }
-            66% {
-                transform: translate(-30px, 30px) scale(0.88);
-            }
-            100% {
-                transform: translate(50px, 40px) scale(1.08);
-            }
-        }
-
-        /* ----------------------------------------- */
-
-        /* Container สำหรับจัดหน้าให้อยู่ตรงกลางและดูเหมือน App */
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: rgba(10, 20, 22, 0.45);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 24px;
-            padding: 1rem 2rem 2.5rem 2rem;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 255, 204, 0.15);
-            text-align: center;
-            z-index: 1;
-            /* Keep above background */
-        }
-
-        /* Header Profile */
-        .profile {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 1.5rem 1rem;
-            margin-bottom: 2rem;
-            background: rgba(10, 20, 22, 0.85);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(0, 255, 204, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform-origin: top;
-        }
-
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(0, 255, 204, 0.4);
-            box-shadow: 0 4px 20px rgba(0, 255, 204, 0.15);
-            margin-bottom: 1rem;
-        }
-
-        .profile h1 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 0.25rem;
-        }
-
-        .profile p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin: 0;
-            max-height: 40px;
-            opacity: 1;
-            overflow: hidden;
-        }
-
-        /* Scrolled (Compact) State */
-        .profile.compact {
-            padding: 0.5rem 1rem;
-            border-radius: 0 0 24px 24px;
-            margin-bottom: 1rem;
-        }
-
-        .profile.compact .profile-img {
-            width: 45px;
-            height: 45px;
-            border-width: 2px;
-            margin-bottom: 0.25rem;
-        }
-
-        .profile.compact h1 {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
-        .profile.compact p {
-            max-height: 0;
-            opacity: 0;
-            margin: 0;
-        }
-
-        /* Links Grid */
-        .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .link-card {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 1rem 1.5rem;
-            border-radius: 16px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 255, 204, 0.15);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .link-card:hover {
-            transform: translateY(-4px);
-            background: var(--card-hover);
-            box-shadow: 0 10px 25px rgba(0, 255, 204, 0.2);
-            border-color: rgba(0, 255, 204, 0.4);
-        }
-
-        .link-icon {
-            font-size: 1.5rem;
-            width: 40px;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        .link-text {
-            flex: 1;
-            text-align: left;
-        }
-
-        /* Brand Colors for Icons */
-        .admission .link-icon {
-            color: #f39c12;
-        }
-
-        .line .link-icon {
-            color: #00B900;
-        }
-
-        .globe .link-icon {
-            color: #2980b9;
-        }
-
-        .facebook .link-icon {
-            color: #1877F2;
-        }
-
-        .discord .link-icon {
-            color: #5865F2;
-        }
-
-        .messenger .link-icon {
-            color: #00B2FF;
-        }
-
-        .map .link-icon {
-            color: #EA4335;
-        }
-
-        .instagram .link-icon i {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #799C9E;
-        }
-
-        .footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer strong {
-            color: #C0DEE0;
-        }
-    </style>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+  <main class="hub-wrapper">
+    <!-- Scrapbook Background Patches -->
+    <div class="bg-patch patch-top-left"></div>
+    <div class="bg-patch patch-paper-left"></div>
+    <div class="bg-patch patch-paper-right"></div>
+    <div class="bg-patch patch-bottom-left"></div>
+    <div class="bg-patch patch-bottom-right"></div>
+
+    <!-- Decorative Hand-Drawn Stars -->
+    <svg class="deco-star star-1" viewBox="0 0 50 50">
+      <polygon points="25,3 31,17 47,19 35,30 38,46 25,38 12,46 15,30 3,19 19,17" fill="#FFFFFF" stroke="#0A1931"
+        stroke-width="3" stroke-linejoin="round" />
+    </svg>
+    <svg class="deco-star star-2" viewBox="0 0 50 50">
+      <polygon points="25,3 31,17 47,19 35,30 38,46 25,38 12,46 15,30 3,19 19,17" fill="#00E5FF" stroke="#0A1931"
+        stroke-width="4" stroke-linejoin="round" />
+    </svg>
+    <svg class="deco-star star-3" viewBox="0 0 50 50">
+      <polygon points="25,3 31,17 47,19 35,30 38,46 25,38 12,46 15,30 3,19 19,17" fill="#1D5CFF" stroke="#0A1931"
+        stroke-width="3.5" stroke-linejoin="round" />
+    </svg>
+    <svg class="deco-star star-4" viewBox="0 0 50 50">
+      <polygon points="25,3 31,17 47,19 35,30 38,46 25,38 12,46 15,30 3,19 19,17" fill="#B5F5EC" stroke="#0A1931"
+        stroke-width="4" stroke-linejoin="round" />
+    </svg>
+
+    <!-- Stamp Profile Header -->
+    <section class="profile-section">
+      <!-- Top-Left Tape Label -->
+      <div class="tape-badge-top" id="badgeTopText">PTECH</div>
+
+      <!-- Scalloped / Wavy Stamp Outer Frame SVG -->
+      <svg class="stamp-frame-svg" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 30,12 
+                 C 42,4 54,20 66,12 
+                 C 78,4 90,20 102,12 
+                 C 114,4 126,20 138,12 
+                 C 150,4 162,20 174,12 
+                 C 186,4 198,20 210,12 
+                 C 222,12 232,22 228,34 
+                 C 220,46 236,58 228,70 
+                 C 220,82 236,94 228,106 
+                 C 220,118 236,130 228,142 
+                 C 220,154 236,166 228,178 
+                 C 220,190 236,202 228,214 
+                 C 228,224 218,232 206,228 
+                 C 194,220 182,236 170,228 
+                 C 158,220 146,236 134,228 
+                 C 122,220 110,236 98,228 
+                 C 86,220 74,236 62,228 
+                 C 50,220 38,236 26,228 
+                 C 14,228 8,218 12,206 
+                 C 20,194 4,182 12,170 
+                 C 20,158 4,146 12,134 
+                 C 20,122 4,110 12,98 
+                 C 20,86 4,74 12,62 
+                 C 20,50 4,38 12,26 
+                 C 12,16 20,12 30,12 Z" fill="#FFFFFF" stroke="#0A1931" stroke-width="6" stroke-linejoin="round" />
+      </svg>
+
+      <!-- Inner Box with Official PTECH Logo -->
+      <div class="avatar-inner-box" id="avatarBox">
+        <img src="https://lh3.googleusercontent.com/d/1hQmJz3B281BiRsrDluYP7HVpabqNPhqF=w200"
+          alt="วิทยาลัยเทคโนโลยีภูเก็ต (PTECH Logo)" referrerpolicy="no-referrer" />
+      </div>
+
+      <!-- Bottom-Right Tape Label -->
+      <div class="tape-badge-bottom" id="badgeBottomText">Connect</div>
+    </section>
+
+    <!-- Subtitle -->
+    <div class="college-subtitle">
+      🎓 วิทยาลัยเทคโนโลยีภูเก็ต (PTECH)
     </div>
 
-    <div class="container">
-        <!-- Header Section -->
-        <header class="profile" id="profile">
-            <img class="profile-img" src="https://lh3.googleusercontent.com/d/1hQmJz3B281BiRsrDluYP7HVpabqNPhqF=w200"
-                alt="PTECH Logo">
-            <h1>วิทยาลัยเทคโนโลยีภูเก็ต</h1>
-            <p>PTECH Connect - ช่องทางการติดต่อ</p>
-        </header>
+    <!-- Dynamic Links Container (With unified Section Skeleton Loader) -->
+    <nav class="links-container" id="linksContainer" aria-label="PTECH Links">
+      <div class="skeleton-section" aria-hidden="true">
+        <div class="skeleton-section-inner">
+          <div class="skeleton-sec-badge"></div>
+          <div class="skeleton-sec-icon">
+            <i class="bi bi-link-45deg"></i>
+          </div>
+          <div class="skeleton-sec-bar w-75"></div>
+          <div class="skeleton-sec-bar w-50"></div>
+        </div>
+      </div>
+    </nav>
 
-        <!-- Links Section -->
-        <main class="links-container" id="links-container">
-            <div style="text-align: center; color: var(--text-muted); padding: 1rem;">กำลังโหลดข้อมูล...</div>
-        </main>
+    <!-- Footer with Configurable Address, 2 Phones & Email -->
+    <footer class="footer-note" id="footerNote">
+      <div class="footer-address" id="footerAddress">
+        <i class="bi bi-geo-alt-fill text-danger"></i>
+        <span id="footerAddressText">224/9 ถ.เทพกระษัตรี ต.ตลาดใหญ่ อ.เมือง จ.ภูเก็ต 83000</span>
+      </div>
+      <div class="footer-phones" id="footerPhones">
+        <a href="tel:076215419" id="footerPhone1" class="footer-phone-link">
+          <i class="bi bi-telephone-fill"></i> <span id="footerPhone1Text">076-215419</span>
+        </a>
+        <span class="text-muted">•</span>
+        <a href="tel:076214147" id="footerPhone2" class="footer-phone-link">
+          <i class="bi bi-telephone-fill"></i> <span id="footerPhone2Text">076-214147</span>
+        </a>
+      </div>
+      <div class="footer-email" id="footerEmail">
+        <a href="mailto:PhuketTechno@gmail.com" id="footerEmailLink" class="footer-email-link">
+          <i class="bi bi-envelope-fill"></i> <span id="footerEmailText">PhuketTechno@gmail.com</span>
+        </a>
+      </div>
+      <div class="footer-copy">
+        © PTECH Connect • วิทยาลัยเทคโนโลยีภูเก็ต
+      </div>
+    </footer>
+  </main>
 
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p><strong>วิทยาลัยเทคโนโลยีภูเก็ต</strong> <br> 224/9 ถ.เทพกระษัตรี ต.ตลาดใหญ่ อ.เมือง จ.ภูเก็ต 83000</p>
-            <p>Email: PhuketTechno@gmail.com</p>
-            <p>โทรศัพท์: 076-215419, 076-214147</p>
-        </footer>
-    </div>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Default Statcounter code for PTECH Connec -->
-    <script type="text/javascript">
-        var sc_project = 12883466;
-        var sc_invisible = 1;
-        var sc_security = "d76bedab"; 
-    </script>
-    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
-    <noscript>
-        <div class="statcounter"><a title="free hit
-counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
-                    src="https://c.statcounter.com/12883466/0/d76bedab/1/" alt="free hit counter"
-                    referrerPolicy="no-referrer-when-downgrade"></a></div>
-    </noscript>
-    <!-- End of Statcounter Code -->
+  <!-- Dynamic Link Loader & Skeleton Management -->
+  <script>
+    const linksContainer = document.getElementById("linksContainer");
 
-    <!-- Script to fetch links & Header Scroll -->
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const profile = document.getElementById('profile');
+    // Display unified whole-section skeleton loader while loading
+    function showSkeleton() {
+      linksContainer.innerHTML = `
+        <div class="skeleton-section" aria-hidden="true">
+          <div class="skeleton-section-inner">
+            <div class="skeleton-sec-badge"></div>
+            <div class="skeleton-sec-icon">
+              <i class="bi bi-link-45deg"></i>
+            </div>
+            <div class="skeleton-sec-bar w-75"></div>
+            <div class="skeleton-sec-bar w-50"></div>
+          </div>
+        </div>
+      `;
+    }
 
-            // Immediate scroll listener for a more responsive trigger
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 20) {
-                    profile.classList.add('compact');
-                } else {
-                    profile.classList.remove('compact');
-                }
-            }, { passive: true }); // Passive true improves scroll performance
+    // Render loaded links onto the page
+    function renderLinks(linksArray) {
+      linksContainer.innerHTML = "";
+      if (!linksArray || linksArray.length === 0) {
+        linksContainer.innerHTML = `
+          <div class="text-center text-white fw-bold py-3" style="font-size: 0.95rem;">
+            ยังไม่มีข้อมูลลิงก์
+          </div>
+        `;
+        return;
+      }
 
-            // Fetch links logic
-            try {
-                const response = await fetch('./links.json' + '?v=' + new Date().getTime());
-                const links = await response.json();
+      linksArray.forEach((item, index) => {
+        const a = document.createElement("a");
+        a.href = item.url || "#";
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
 
-                const container = document.getElementById('links-container');
-                container.innerHTML = '';
+        // Assign cycling color class (color-1 through color-6)
+        const colorIndex = (index % 6) + 1;
+        a.className = `neo-btn color-${colorIndex}`;
 
-                links.forEach(link => {
-                    const a = document.createElement('a');
-                    a.href = link.url;
-                    a.target = '_blank';
-                    a.className = `link-card ${link.class}`;
-                    a.innerHTML = `
-                        <div class="link-icon"><i class="${link.icon}"></i></div>
-                        <span class="link-text">${link.title}</span>
-                    `;
-                    container.appendChild(a);
-                });
-            } catch (error) {
-                console.error('Error loading links:', error);
-                const container = document.getElementById('links-container');
-                container.innerHTML = '<div style="text-align: center; color: #fff;">ไม่สามารถโหลดข้อมูลลิงก์ได้</div>';
+        // Custom color overrides if specified in JSON
+        if (item.bgColor) a.style.setProperty("--btn-bg", item.bgColor);
+        if (item.textColor) a.style.setProperty("--btn-text", item.textColor);
+
+        // Emoji or Icon class support
+        const emojiHtml = item.emoji
+          ? `<span class="btn-emoji">${item.emoji}</span>`
+          : item.icon
+            ? `<i class="${item.icon}"></i>`
+            : "";
+
+        // Optional status badge
+        const badgeHtml = item.badge
+          ? `<span class="badge-new">${item.badge}</span>`
+          : "";
+
+        a.innerHTML = `
+          <span>${item.title}</span>
+          ${emojiHtml}
+          ${badgeHtml}
+        `;
+        linksContainer.appendChild(a);
+      });
+    }
+
+    function renderConfig(cfg) {
+      if (!cfg) return;
+      if (cfg.address) {
+        const addrEl = document.getElementById("footerAddressText");
+        if (addrEl) addrEl.innerText = cfg.address;
+      }
+      if (cfg.phone1) {
+        const p1El = document.getElementById("footerPhone1");
+        const p1Text = document.getElementById("footerPhone1Text");
+        if (p1El) p1El.href = "tel:" + cfg.phone1.replace(/[^0-9]/g, "");
+        if (p1Text) p1Text.innerText = cfg.phone1;
+
+        const socialPhone = document.getElementById("socialPhoneBtn");
+        if (socialPhone) socialPhone.href = "tel:" + cfg.phone1.replace(/[^0-9]/g, "");
+      }
+      if (cfg.phone2) {
+        const p2El = document.getElementById("footerPhone2");
+        const p2Text = document.getElementById("footerPhone2Text");
+        if (p2El) p2El.href = "tel:" + cfg.phone2.replace(/[^0-9]/g, "");
+        if (p2Text) p2Text.innerText = cfg.phone2;
+      }
+      if (cfg.email) {
+        const emailLink = document.getElementById("footerEmailLink");
+        const emailText = document.getElementById("footerEmailText");
+        if (emailLink) emailLink.href = "mailto:" + cfg.email;
+        if (emailText) emailText.innerText = cfg.email;
+      }
+    }
+
+    // Fetch links & config directly from links.json with skeleton loader transition
+    async function initApp() {
+      showSkeleton();
+
+      const startTime = Date.now();
+      let linksData = [];
+      let configData = null;
+
+      try {
+        const response = await fetch(`./links.json?t=${startTime}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("Fetch failed: HTTP " + response.status);
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          linksData = data;
+        } else {
+          linksData = data.links || [];
+          configData = data.config || null;
+        }
+      } catch (err) {
+        console.warn("Could not load links.json, checking localStorage:", err);
+        const cached = localStorage.getItem("ptech_links");
+        if (cached) {
+          try {
+            const parsed = JSON.parse(cached);
+            if (Array.isArray(parsed)) {
+              linksData = parsed;
+            } else {
+              linksData = parsed.links || [];
+              configData = parsed.config || null;
             }
-        });
-    </script>
+          } catch (e) {
+            linksData = [];
+          }
+        }
+      }
 
+      if (configData) {
+        renderConfig(configData);
+      } else {
+        const cachedCfg = localStorage.getItem("ptech_config");
+        if (cachedCfg) {
+          try { renderConfig(JSON.parse(cachedCfg)); } catch (e) { }
+        }
+      }
+
+      // Smooth display ensuring skeleton remains visible for at least 250ms for great visual feedback
+      const elapsedTime = Date.now() - startTime;
+      const minDelay = 250;
+      const remainingDelay = Math.max(0, minDelay - elapsedTime);
+
+      setTimeout(() => {
+        renderLinks(linksData || []);
+      }, remainingDelay);
+    }
+
+    document.addEventListener("DOMContentLoaded", initApp);
+  </script>
 </body>
 
 </html>
