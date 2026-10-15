@@ -1,58 +1,64 @@
-[
+{
+  "config": {
+    "address": "224/9 ถ.เทพกระษัตรี ต.ตลาดใหญ่ อ.เมือง จ.ภูเก็ต 83000",
+    "phone1": "076-215419",
+    "phone2": "076-214147",
+    "email": "PhuketTechno@gmail.com"
+  },
+  "links": [
     {
-        "id": 1,
-        "title": "สมัครนักเรียนออนไลน์",
-        "url": "https://ptech.pages.dev/admission/?openExternalBrowser=1",
-        "icon": "fa-solid fa-pen-to-square",
-        "class": "admission"
+      "id": 1,
+      "title": "สมัครเรียนออนไลน์ (ปวช./ปวส.)",
+      "url": "https://ptech.pages.dev/admission/?openExternalBrowser=1",
+      "emoji": "✏️",
+      "badge": "OPEN",
+      "bgColor": "#1D5CFF",
+      "textColor": "#FFFFFF"
     },
     {
-        "id": 2,
-        "title": "LINE สมัครเรียน 2570",
-        "url": "https://lin.ee/90qXbyR",
-        "icon": "fab fa-line",
-        "class": "line"
+      "id": 2,
+      "title": "LINE สมัครเรียน 2570",
+      "url": "https://lin.ee/CmdZ2X8N",
+      "emoji": "💝",
+      "badge": "",
+      "bgColor": "#1e6c3c",
+      "textColor": "#ffffff"
     },
     {
-        "id": 3,
-        "title": "เว็บไซต์ www.ptech.ac.th",
-        "url": "https://www.ptech.ac.th/?openExternalBrowser=1",
-        "icon": "fas fa-globe",
-        "class": "globe"
+      "id": 5,
+      "title": "เว็บไซต์ www.ptech.ac.th",
+      "url": "https://www.ptech.ac.th/?openExternalBrowser=1",
+      "emoji": "🌐",
+      "badge": "",
+      "bgColor": "#B5F5EC",
+      "textColor": "#0A1931"
     },
     {
-        "id": 4,
-        "title": "วิทยาลัยเทคโนโลยีภูเก็ต",
-        "url": "https://www.facebook.com/PhuketTechno/?openExternalBrowser=1",
-        "icon": "fab fa-facebook-f",
-        "class": "facebook"
+      "id": 3,
+      "title": "เพจ Facebook วิทยาลัยฯ",
+      "url": "https://www.facebook.com/PhuketTechno?openExternalBrowser=1",
+      "emoji": "📚",
+      "badge": "",
+      "bgColor": "#00E5FF",
+      "textColor": "#0A1931"
     },
     {
-        "id": 5,
-        "title": "Messenger",
-        "url": "https://m.me/PhuketTechno/?openExternalBrowser=1",
-        "icon": "fab fa-facebook-messenger",
-        "class": "messenger"
+      "id": 4,
+      "title": "ทักแชทสอบถาม (Messenger)",
+      "url": "https://m.me/PhuketTechno?openExternalBrowser=1",
+      "emoji": "🧩",
+      "badge": "",
+      "bgColor": "#8CA8FF",
+      "textColor": "#0A1931"
     },
     {
-        "id": 6,
-        "title": "Instagram",
-        "url": "https://www.instagram.com/phukettechno/?openExternalBrowser=1",
-        "icon": "fab fa-instagram",
-        "class": "instagram"
-    },
-    {
-        "id": 7,
-        "title": "Discord Community",
-        "url": "https://discord.gg/pV4SYmHnNm?openExternalBrowser=1",
-        "icon": "fa-brands fa-discord",
-        "class": "discord"
-    },
-    {
-        "id": 8,
-        "title": "แผนที่วิทยาลัย",
-        "url": "https://maps.app.goo.gl/LT7YUZw5c2QP9tM98?openExternalBrowser=1",
-        "icon": "fas fa-map-marked-alt",
-        "class": "map"
+      "id": 6,
+      "title": "แผนที่การเดินทาง (Google Maps)",
+      "url": "https://maps.google.com/?q=วิทยาลัยเทคโนโลยีภูเก็ต",
+      "emoji": "📍",
+      "badge": "",
+      "bgColor": "#8a0f80",
+      "textColor": "#FFFFFF"
     }
-]
+  ]
+}
